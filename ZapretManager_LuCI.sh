@@ -137,16 +137,16 @@ fi
 
 CONF="/etc/config/zapret"
 ZM_VERSION="@ZM_VERSION@"
-ZM_SCRIPT_URL="https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/ZapretManager_LuCI.sh"
+ZM_SCRIPT_URL="https://raw.githubusercontent.com/pdx15/Zapret-Manager/refs/heads/290/ZapretManager_LuCI.sh"
 GH_RAW="https://raw.githubusercontent.com"
 GH_MAIN="https://github.com"
-MT_URL_ITDOG="${GH_RAW}/StressOzz/Zapret-Manager/refs/heads/main/files/MagiTrickle/configAD.yaml"
-MT_URL_IH1="${GH_RAW}/StressOzz/Zapret-Manager/refs/heads/main/files/MagiTrickle/config.yaml"
-MT_URL_IH2="${GH_RAW}/StressOzz/Zapret-Manager/refs/heads/main/files/MagiTrickle/configOLD.yaml"
-EXCLUDE_URL="${GH_RAW}/StressOzz/Zapret-Manager/refs/heads/main/zapret-hosts-user-exclude.txt"
-FLOWSEAL_ZIP="${GH_MAIN}/Flowseal/zapret-discord-youtube/archive/refs/heads/main.zip"
-FLOWSEAL_FAKE_RAW="${GH_MAIN}/Flowseal/zapret-discord-youtube/raw/refs/heads/main/bin"
-STR_URL="${GH_RAW}/StressOzz/Zapret-Manager/refs/heads/main/files/StrYoutube"
+MT_URL_ITDOG="${GH_RAW}/pdx15/Zapret-Manager/refs/heads/290/files/MagiTrickle/configAD.yaml"
+MT_URL_IH1="${GH_RAW}/pdx15/Zapret-Manager/refs/heads/290/files/MagiTrickle/config.yaml"
+MT_URL_IH2="${GH_RAW}/pdx15/Zapret-Manager/refs/heads/290/files/MagiTrickle/configOLD.yaml"
+EXCLUDE_URL="${GH_RAW}/pdx15/Zapret-Manager/refs/heads/290/zapret-hosts-user-exclude.txt"
+FLOWSEAL_ZIP="${GH_MAIN}/Flowseal/zapret-discord-youtube/archive/refs/heads/290.zip"
+FLOWSEAL_FAKE_RAW="${GH_MAIN}/Flowseal/zapret-discord-youtube/raw/refs/heads/290/bin"
+STR_URL="${GH_RAW}/pdx15/Zapret-Manager/refs/heads/290/files/StrYoutube"
 JOBS_DIR="/tmp/zapret-manager-luci"
 ZM_STATE_DIR="/opt/zapret-manager-luci/state"
 CRON_FILE="/etc/crontabs/root"
@@ -1464,13 +1464,13 @@ _do_install_zapret2_core() {
 	echo "==> Настраиваем стратегии"
 	mkdir -p /opt/zapret2/init.d/openwrt/custom.d
 	wget -q --timeout=20 -U "Mozilla/5.0" -O /opt/zapret2/init.d/openwrt/custom.d/50-discord_media.sh \
-		"${GH_RAW}/StressOzz/Zapret-Manager/refs/heads/main/files/Zapret2/50-discord_media.sh" \
+		"${GH_RAW}/pdx15/Zapret-Manager/refs/heads/290/files/Zapret2/50-discord_media.sh" \
 		|| echo "!! Не удалось загрузить 50-discord_media.sh"
 	if _nochange_in /etc/config/zapret2; then echo "   · Стратегия Zapret2 помечена #nochange — оставляем как есть"
 	else
-		_nochange_fetch /etc/config/zapret2 "${GH_RAW}/StressOzz/Zapret-Manager/refs/heads/main/files/Zapret2/zapret2" || echo "!! Не удалось загрузить zapret2"
+		_nochange_fetch /etc/config/zapret2 "${GH_RAW}/pdx15/Zapret-Manager/refs/heads/290/files/Zapret2/zapret2" || echo "!! Не удалось загрузить zapret2"
 	fi
-	_nochange_fetch /opt/zapret2/ipset/zapret_hosts_discord.txt "${GH_RAW}/StressOzz/Zapret-Manager/refs/heads/main/files/Zapret2/zapret_hosts_discord.txt" \
+	_nochange_fetch /opt/zapret2/ipset/zapret_hosts_discord.txt "${GH_RAW}/pdx15/Zapret-Manager/refs/heads/290/files/Zapret2/zapret_hosts_discord.txt" \
 		|| echo "!! Не удалось загрузить zapret_hosts_discord.txt"
 
 	echo "==> Запускаем Zapret2"
@@ -2409,9 +2409,9 @@ hosts_toggle() {
 hosts_replace_geohide() {
 	local region="$1" url tmp
 	case "$region" in
-		ru) url="${GH_RAW}/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/hosts" ;;
-		eu) url="${GH_RAW}/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/eu/hosts" ;;
-		us) url="${GH_RAW}/Internet-Helper/GeoHideDNS/refs/heads/main/hosts/us/hosts" ;;
+		ru) url="${GH_RAW}/Internet-Helper/GeoHideDNS/refs/heads/290/hosts/hosts" ;;
+		eu) url="${GH_RAW}/Internet-Helper/GeoHideDNS/refs/heads/290/hosts/eu/hosts" ;;
+		us) url="${GH_RAW}/Internet-Helper/GeoHideDNS/refs/heads/290/hosts/us/hosts" ;;
 		*) echo '{"error":"неизвестный регион"}'; return 1 ;;
 	esac
 	tmp="$JOBS_DIR/geohide_hosts.tmp"
@@ -3588,8 +3588,8 @@ nfqws_opt_set() {
 
 TG_MTPROTO_VER="0.10"
 TGWS_VERSION="0.3.1"
-TGWS_BASE_URL="https://gitlab.com/xyzmean/brb/-/raw/main/dist"
-TGWS_VERSION_URL="https://gitlab.com/xyzmean/brb/-/raw/main/VERSION"
+TGWS_BASE_URL="https://gitlab.com/xyzmean/brb/-/raw/290/dist"
+TGWS_VERSION_URL="https://gitlab.com/xyzmean/brb/-/raw/290/VERSION"
 TG_GO_VER="1.4.1"
 TG_RS_VER="2.3.3"
 TG_BIN_GO="/usr/bin/tg-ws-proxy-go"
@@ -4361,7 +4361,7 @@ _test_recover() {
 TEST_BACKUP="$ZM_STATE_DIR/strategy_test.backup"
 TEST_STOP_FLAG="$TEST_DIR/stop"
 TEST_MODE_FILE="$TEST_DIR/mode"
-TEST_DOMAINS_JSON="${GH_RAW}/hyperion-cs/dpi-checkers/refs/heads/main/ru/tcp-16-20/suite.v2.json"
+TEST_DOMAINS_JSON="${GH_RAW}/hyperion-cs/dpi-checkers/refs/heads/290/ru/tcp-16-20/suite.v2.json"
 TEST_YT_DOMAINS="youtu.be youtube.com i.ytimg.com i9.ytimg.com yt3.ggpht.com yt4.ggpht.com googleapis.com jnn-pa.googleapis.com googleusercontent.com signaler-pa.youtube.com youtubei.googleapis.com manifest.googlevideo.com yt3.googleusercontent.com rr4---sn-4g5e6nze.googlevideo.com rr4---sn-5go7yner.googlevideo.com rr4---sn-q4flrnsl.googlevideo.com rr5---sn-n8v7knez.googlevideo.com rr2---sn-q4fl6ndl.googlevideo.com rr1---sn-q4fl6n6y.googlevideo.com rr1---sn-aj5go5-53.googlevideo.com rr1---sn-4axm-n8vs.googlevideo.com rr14---sn-n8v7kn7r.googlevideo.com rr16---sn-axq7sn76.googlevideo.com rr4---sn-jvhnu5g-c35d.googlevideo.com rr1---sn-8ph2xajvh-5xge.googlevideo.com rr1---sn-xguxaxjvh-gufl.googlevideo.com rr1---sn-gvnuxaxjvh-jx3z.googlevideo.com rr1---sn-gvnuxaxjvh-jx3l.googlevideo.com rr1---sn-gvnuxaxjvh-o8ge.googlevideo.com rr5---sn-gvnuxaxjvh-n8vk.googlevideo.com rr10---sn-gvnuxaxjvh-304z.googlevideo.com rr12---sn-gvnuxaxjvh-bvwz.googlevideo.com rr3---sn-ug5onuxaxjvh-n8v6.googlevideo.com rr1---sn-ug5onuxaxjvh-p5ge.googlevideo.com rr1---sn-ug5onuxaxjvh-p3ul.googlevideo.com rr1---sn-ug5onuxaxjvh-n8v6.googlevideo.com rr1---sn-u5uuxaxjvhg0-ocje.googlevideo.com"
 TEST_PARALLEL=8
 
@@ -4393,7 +4393,7 @@ _test_prepare_urls() {
 		"forum.ru-board.com|https://forum.ru-board.com" \
 		"play.google.com|https://play.google.com" \
 		"downloads.openwrt.org|https://downloads.openwrt.org" \
-		"githubusercontent.com|https://raw.githubusercontent.com/StressOzz/Zapret-Manager/refs/heads/main/Zapret-Manager.sh" \
+		"githubusercontent.com|https://raw.githubusercontent.com/pdx15/Zapret-Manager/refs/heads/290/Zapret-Manager.sh" \
 		>> "$out"
 	curl -fsSL --connect-timeout 8 --max-time 15 "$TEST_DOMAINS_JSON" 2>/dev/null \
 		| sed -n 's/.*"id":[[:space:]]*"\([^"]*\)".*"host":[[:space:]]*"\([^"]*\)".*/\1|\2/p' >> "$out"
@@ -5564,8 +5564,8 @@ do_mixomo_install() {
 	fi
 	mkdir -p /etc/hev-socks5-tunnel
 	printf '%s\n' 'tunnel:' '  name: Mihomo' '  mtu: 8500' '  multi-queue: false' '  ipv4: 198.18.0.1' \
-		'socks5:' '  port: 7890' '  address: 127.0.0.1' "  udp: 'udp'" > /etc/hev-socks5-tunnel/main.yml
-	chmod 600 /etc/hev-socks5-tunnel/main.yml
+		'socks5:' '  port: 7890' '  address: 127.0.0.1' "  udp: 'udp'" > /etc/hev-socks5-tunnel/290.yml
+	chmod 600 /etc/hev-socks5-tunnel/290.yml
 
 	echo "==> Настраиваем сетевой интерфейс и firewall"
 	uci -q delete network.Mihomo
@@ -5586,7 +5586,7 @@ do_mixomo_install() {
 		uci add hev-socks5-tunnel instance >/dev/null
 	fi
 	uci set hev-socks5-tunnel.@instance[0].enabled='1'
-	uci set hev-socks5-tunnel.@instance[0].conffile='/etc/hev-socks5-tunnel/main.yml'
+	uci set hev-socks5-tunnel.@instance[0].conffile='/etc/hev-socks5-tunnel/290.yml'
 	uci commit hev-socks5-tunnel
 	/etc/init.d/hev-socks5-tunnel restart >/dev/null 2>&1
 	sleep 2
@@ -8352,7 +8352,7 @@ doh_set() {
 
 RB_SHARE="/usr/share/zm-redbtn"
 ZM_LISTS_DIR="/opt/zapret-manager-luci/lists"
-ZM_LISTS_ITD="${GH_RAW}/itdoginfo/allow-domains/main"
+ZM_LISTS_ITD="${GH_RAW}/itdoginfo/allow-domains/290"
 # Meta, Instagram, Facebook и WhatsApp — списки v2fly (и встроенные дополнения из itdoginfo); те же ссылки берёт Forkozz
 # (PKG_LISTS в netshift.uc). Пункты не пересекаются: каждый включает только свой сервис. Подсети Meta (AS32934) не берём —
 # по IP не отличить Instagram от Facebook и WhatsApp, они включили бы всё сразу. svc_meta.lst, svc_facebook_dev.lst и
@@ -8482,7 +8482,7 @@ ST_PHASE_FILE="$ST_RUN/phase"
 ST_WARP_IF="zmwarp"
 ST_WARP_ZONE="zmwarp"
 ST_AWG_MIRRORS="${GH_MAIN}/2Grey/awg-openwrt/releases/download ${GH_MAIN}/Slava-Shchipunov/awg-openwrt/releases/download"
-ST_AWG_MIRROR_FLAT="https://gitlab.com/xyzmean/brb/-/raw/main/deps/awg"
+ST_AWG_MIRROR_FLAT="https://gitlab.com/xyzmean/brb/-/raw/290/deps/awg"
 ST_CRON_TAG="# zm-steer"
 ST_CRON_CMD="/opt/zapret-manager-luci/backend.sh steer_action cron_restart x >/dev/null 2>&1"
 ST_WARP_N=3
@@ -8537,7 +8537,7 @@ STL_SBIN="${STL_SBIN:-/usr/sbin}"
 STL_STATE="${STL_STATE:-/var/lib/steer}"
 STL_MIN="2.0.0"
 STL_MODS="vless xsteer obfs tgws hysteria2 proxy"
-STL_REL_URLS="${STL_REL_URLS:-https://raw.githubusercontent.com/splify2/releases/main/version.json https://cdn.jsdelivr.net/gh/splify2/releases@main/version.json https://splify2.github.io/releases/version.json}"
+STL_REL_URLS="${STL_REL_URLS:-https://raw.githubusercontent.com/splify2/releases/290/version.json https://cdn.jsdelivr.net/gh/splify2/releases@main/version.json https://splify2.github.io/releases/version.json}"
 STL_PKG_URLS="${STL_PKG_URLS:-https://github.com/splify2/releases/releases/download/steer-v@V@ https://github.com/splify2/steer/releases/download/v@V@ https://gitlab.com/xyzmean/steer/-/raw/dist}"
 STL_WARP_OUT="zm_warp"
 STL_VPN_OUT="zm_vpn"
@@ -15021,11 +15021,11 @@ _fk_feeds_official() {
 # Old Forkop configs may point lists at third-party mirrors: put the official sources back before importing.
 _fk_legacy_conf_fix() {
 	sed -i -E \
-		-e 's#https?://mirror\.(infotechtg|51343)\.ru/forkop/lists/allow-domains/#https://raw.githubusercontent.com/itdoginfo/allow-domains/main/#g' \
-		-e 's#https?://mirror\.(infotechtg|51343)\.ru/forkop/lists/b4geoip-forkop/#https://raw.githubusercontent.com/Greeg0ry/b4geoip-forkop/main/#g' \
+		-e 's#https?://mirror\.(infotechtg|51343)\.ru/forkop/lists/allow-domains/#https://raw.githubusercontent.com/itdoginfo/allow-domains/290/#g' \
+		-e 's#https?://mirror\.(infotechtg|51343)\.ru/forkop/lists/b4geoip-forkop/#https://raw.githubusercontent.com/Greeg0ry/b4geoip-forkop/290/#g' \
 		-e 's#https?://mirror\.(infotechtg|51343)\.ru/forkop/lists/rulesets/community/#https://github.com/itdoginfo/allow-domains/releases/latest/download/#g' \
 		-e 's#https?://mirror\.(infotechtg|51343)\.ru/forkop/lists/rulesets/adlist\.srs#https://github.com/zxc-rv/ad-filter/releases/latest/download/adlist.srs#g' \
-		-e 's#https?://mirror\.(infotechtg|51343)\.ru/forkop/lists/rulesets/supercell\.srs#https://raw.githubusercontent.com/ushan0v/sing-box-supercell-ruleset/main/supercell.srs#g' \
+		-e 's#https?://mirror\.(infotechtg|51343)\.ru/forkop/lists/rulesets/supercell\.srs#https://raw.githubusercontent.com/ushan0v/sing-box-supercell-ruleset/290/supercell.srs#g' \
 		-e 's#https?://mirror\.(infotechtg|51343)\.ru/forkop/lists/rulesets/github\.srs#https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs#g' "$1"
 }
 
@@ -16915,7 +16915,7 @@ AB_SET="$AB_DIR/settings"
 AB_ALLOW="$AB_DIR/allow.txt"
 AB_NAME="zm-adblock.conf"
 AB_CRON_TAG="# zm-adblock"
-AB_URL_GH="${GH_RAW}/hagezi/dns-blocklists/main/dnsmasq"
+AB_URL_GH="${GH_RAW}/hagezi/dns-blocklists/290/dnsmasq"
 AB_URL_CDN="https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/dnsmasq"
 AB_ALLOW_DEFAULT='# Переходы по рекламе в поиске Яндекса
 yabs.yandex.ru
@@ -17478,12 +17478,12 @@ const SERVICES_BASE = [ "russia_inside", "russia_outside", "ukraine_inside", "ge
 	"cloudfront", "digitalocean", "hetzner", "ovh", "telegram", "roblox" ];
 const EXTRA_SRS = {
 	ads_hagezi_pro: "https://github.com/zxc-rv/ad-filter/releases/latest/download/adlist.srs",
-	supercell: "https://raw.githubusercontent.com/ushan0v/sing-box-supercell-ruleset/main/supercell.srs",
+	supercell: "https://raw.githubusercontent.com/ushan0v/sing-box-supercell-ruleset/290/supercell.srs",
 	github: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs"
 };
 const ST_DIR = getenv("ZM_FK_STDIR") || "/etc/zm-steer";
 const RB_CONF = getenv("ZM_FK_RBCONF") || "/usr/share/zm-redbtn/services.conf";
-const ITD_RAW = "https://raw.githubusercontent.com/itdoginfo/allow-domains/main";
+const ITD_RAW = "https://raw.githubusercontent.com/itdoginfo/allow-domains/290";
 const SRS_MAIN = "https://github.com/itdoginfo/allow-domains/releases/latest/download";
 const ITD_SUBNETS = { cloudflare: true, cloudfront: true, digitalocean: true, discord: true, google_meet: true, hetzner: true,
 	meta: true, ovh: true, roblox: true, telegram: true, twitter: true };
@@ -22616,10 +22616,10 @@ return view.extend({
 		if (!document.body.classList.contains('zmw-body')) wrap.appendChild(zm.alertBanners(healthData, function() { location.reload(); }));
 		wrap.appendChild(E('div', { 'class': 'zm-header' }, [
 			E('h2', {}, 'Zapret Manager для LuCI и Web'),
-			E('span', { 'class': 'zm-header-by' }, 'by StressOzz · v' + (zmUpdate.current || '?')),
+			E('span', { 'class': 'zm-header-by' }, 'by pdx15 · v' + (zmUpdate.current || '?')),
 			E('div', { 'class': 'zm-header-links' }, [
 				E('a', { 'href': 'http://stresskvn.lol/', 'target': '_blank', 'rel': 'noreferrer' }, 'StressKVN — обход белых списков!'),
-				E('a', { 'href': 'https://t.me/stressozz_manager', 'target': '_blank', 'rel': 'noreferrer' }, 'Сообщество Telegram'),
+				E('a', { 'href': 'https://t.me/pdx15_manager', 'target': '_blank', 'rel': 'noreferrer' }, 'Сообщество Telegram'),
 				E('a', { 'href': 'http://' + window.location.hostname + ':7788/', 'target': '_blank', 'rel': 'noreferrer', 'class': 'zm-webui-link' }, 'Web UI ↗')
 			])
 		]));
@@ -30199,7 +30199,7 @@ return view.extend({
 		wrap.appendChild(uninstallCard);
 
 		var CREDITS = [
-			{ product: 'Zapret Manager и ByeTube', author: 'StressOzz', url: 'https://github.com/StressOzz', self: true },
+			{ product: 'Zapret Manager и ByeTube', author: 'pdx15', url: 'https://github.com/pdx15', self: true },
 			{ product: 'zapret, zapret2', author: 'bol-van', url: 'https://github.com/bol-van' },
 			{ product: 'zapret-openwrt', author: 'remittor', url: 'https://github.com/remittor/zapret-openwrt' },
 			{ product: 'Zapret2', author: 'routerich', url: 'https://github.com/routerich' },
@@ -35481,7 +35481,7 @@ function buildShell() {
 		E('div', { 'class': 'zmw-device-sub' }, [ location.hostname ]),
 		E('div', { 'class': 'zmw-device-sub' }, [ '' ])
 	]);
-	verEl = E('div', { 'class': 'zmw-brand-sub' }, [ 'by StressOzz' ]);
+	verEl = E('div', { 'class': 'zmw-brand-sub' }, [ 'by pdx15' ]);
 	updateEl = E('a', { 'class': 'zmw-update', 'href': '#/dashboard', 'hidden': '' }, [ 'Доступно обновление' ]);
 	memEl = E('div', { 'class': 'zmw-mem' });
 
@@ -35514,7 +35514,7 @@ function buildShell() {
 			E('a', { 'class': 'zmw-icon-btn zmw-link-btn zmw-link-kvn', 'href': 'http://stresskvn.lol/', 'target': '_blank', 'rel': 'noreferrer', 'title': 'StressKVN — умный VPN для стабильного доступа в любых условиях.' }, [
 				icon('rocket'), E('span', { 'class': 'zmw-lbl-full' }, [ E('span', { 'class': 'zmw-kvn-l1' }, [ 'StressKVN — лучший VPN' ]), E('span', { 'class': 'zmw-kvn-l2' }, [ 'обход белых списков · телефон, ПК, роутер' ]) ]), E('span', { 'class': 'zmw-lbl-short' }, [ 'StressKVN' ])
 			]),
-			E('a', { 'class': 'zmw-icon-btn zmw-link-btn zmw-link-tg', 'href': 'https://t.me/stressozz_manager', 'target': '_blank', 'rel': 'noreferrer', 'title': 'Сообщество Telegram' }, [
+			E('a', { 'class': 'zmw-icon-btn zmw-link-btn zmw-link-tg', 'href': 'https://t.me/pdx15_manager', 'target': '_blank', 'rel': 'noreferrer', 'title': 'Сообщество Telegram' }, [
 				icon('telegram'), E('span', { 'class': 'zmw-lbl-full' }, [ 'Сообщество Telegram' ]), E('span', { 'class': 'zmw-lbl-short' }, [ 'Telegram' ])
 			]),
 			E('span', { 'class': 'zmw-top-sep' }),
@@ -35687,7 +35687,7 @@ function loadShellInfo() {
 	}).catch(function () {});
 	callUpd().then(function (u) {
 		if (!u || u.error) return;
-		if (u.current) verEl.textContent = 'by StressOzz · v' + u.current;
+		if (u.current) verEl.textContent = 'by pdx15 · v' + u.current;
 		if (u.latest && u.current && u.latest !== u.current && u.newer !== false) {
 			updateEl.hidden = false;
 			updateEl.textContent = 'Доступна версия ' + u.latest;
@@ -37598,8 +37598,8 @@ ZMW_PORT="$(uci -q get uhttpd.zmweb.listen_http | tr ' ' '\n' | head -n1 | sed '
 ZMW_IP="$(/opt/zapret-manager-luci/backend.sh lan_ip 2>/dev/null || true)"
 [ -n "$ZMW_IP" ] || ZMW_IP="192.168.1.1"
 
-echo "sh <(wget -q -O - https://raw.githubusercontent.com/StressOzz/Zapret-Manager/main/Zapret-Manager.sh)" > /usr/bin/zms; chmod +x /usr/bin/zms
-echo "sh <(wget -q -O - https://raw.githubusercontent.com/StressOzz/Zapret-Manager/main/ZapretManager_LuCI.sh)" > /usr/bin/zmw; chmod +x /usr/bin/zmw
+echo "sh <(wget -q -O - https://raw.githubusercontent.com/pdx15/Zapret-Manager/290/Zapret-Manager.sh)" > /usr/bin/zms; chmod +x /usr/bin/zms
+echo "sh <(wget -q -O - https://raw.githubusercontent.com/pdx15/Zapret-Manager/290/ZapretManager_LuCI.sh)" > /usr/bin/zmw; chmod +x /usr/bin/zmw
 if [ "$ZMW_OK" = 1 ]; then _zmi_ok "Web UI включён на порту ${ZMW_PORT:-7788}"
 else _zmi_warn "Web UI не включён: на роутере нет веб-сервера uhttpd или не установился uhttpd-mod-ubus"; fi
 echo -e "\n${GREEN}Готово: Zapret Manager для LuCI и Web $ZM_NEW_VER установлен${NC}\n"
